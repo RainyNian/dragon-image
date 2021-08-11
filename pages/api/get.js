@@ -2,13 +2,9 @@
 import Image from 'next/image'
 const fs = require('fs')
 // 异步读取目录内容
-function readdir() {
 
-}
 
 export default (req, res) => {
-  var resp = readdir()
-  console.log(resp)
   fs.readdir("public/image", { encoding: 'utf8' }, (err, files) => {
     if (err)  throw err
     var image = files[Math.floor((Math.random()*files.length))]
