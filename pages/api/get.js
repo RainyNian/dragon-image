@@ -4,7 +4,7 @@ const fs = require('fs')
 const child_process = require('child_process')
 
 export default (req, res) => {
-  var qwq = child_process.execSync("pwd && ls")
+  var qwq = child_process.execSync("pwd && ls").toString()
   console.warn(qwq)
   fs.readdir("/public/image/", { encoding: 'utf8' }, (err, files) => {
     if (err) throw err
