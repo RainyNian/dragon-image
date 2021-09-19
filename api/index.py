@@ -16,5 +16,10 @@ async def get():
     def iterfile(path):  # (1)
         with open(path, mode="rb") as file_like:  # (2)
             yield from file_like  # (3)
-
+    if file.endswith(".jpg"):
+        return StreamingResponse(iterfile(path+file), media_type="image/jpeg")
+    elif file.endswith(".gif"):
+        return StreamingResponse(iterfile(path+file), media_type="image/gif")
+    elif file.endswith(".bmp"):
+        return StreamingResponse(iterfile(path+file), media_type="image/bmp")
     return StreamingResponse(iterfile(path+file), media_type="image")
